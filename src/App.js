@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Switch, Route } from 'react-router-dom'
 import './App.css';
 
 class App extends Component {
@@ -23,6 +23,10 @@ class App extends Component {
             </li>
           </ul>
         </div>
+        <Switch>
+          <Route path='/github' render={() => <h1>GITHUB IS OK</h1>} />
+          <Route render={() => <p> Pick a link bitch </p>}/>
+        </Switch>
       </div>
     );
   }
