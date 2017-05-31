@@ -17,7 +17,11 @@ class PokeApi extends Component {
     ev.preventDefault()
     this.props.history.push(`/pokeapi/${this.state.pokemon}`)
   }
-  
+
+  pokeGen = (ev) => {
+    const pokemon = Math.floor(Math.random() * 720)
+    this.setState({ pokemon })
+  }
 
   render() {
     return (
@@ -30,8 +34,9 @@ class PokeApi extends Component {
               value={this.state.pokemon}
               onChange={this.handleChange} />
           </div>
-          <div>
+          <div className="buttons">
             <button type="submit">Look up Pokemon</button>
+            <button onClick={this.pokeGen}>Random Pokemon</button>
           </div>
         </form>
 
