@@ -3,13 +3,14 @@ import './Pokemon.css'
 
 class Pokemon extends Component {
   state = {
-    poke: {
+    pokedex: {
         id: '',
         name: '',
         base_experience: '',
         height: '',
         weight: '',
-        sprites: {}
+        sprites: {},
+        types: [],
     }
   }
 
@@ -21,7 +22,7 @@ class Pokemon extends Component {
   fetchPokeData = (props) => {
     fetch(`http://pokeapi.co/api/v2/pokemon/${this.props.match.params.pokemon}`)
       .then(response => response.json())
-      .then(poke => this.setState({ poke }))
+      .then(pokedex => this.setState({ pokedex }))
   }
   
   componentWillReceiveProps(nextProps) {
@@ -29,20 +30,33 @@ class Pokemon extends Component {
     if (locationChanged) {
       this.fetchPokeData(nextProps)
     }
+  
+  }
+  
+  getTypes(props) {
+    const { pokedex } = this.state
+    let types = ''
+    for (let i = 0; i < pokedex.types.length; i++) {
+        types = types + " " + pokedex.types[i].type.name
+    }
+    return types
   }
 
 
-
   render() {
-    const { poke } = this.state
+    const { pokedex } = this.state
+    
     return (
       <div className="pokemon">
-        <img src={poke.sprites.front_default}/>
-        <h3>Id: {poke.id}</h3>
-        <h3>Name: {poke.name}</h3>
-        <h3>Base Experience: {poke.base_experience}</h3>
-        <h3>Height: {poke.height}</h3>
-        <h3>Weight: {poke.weight}</h3>
+        <img src={pokedex.sprites.front_default} alt="pokemon"/>
+        <h3>Id: {pokedex.id}</h3>
+        <h3>Name: {pokedex.name}</h3>
+        <h3>Base Experience: {pokedex.base_experience}</h3>
+        <h3>Height: {pokedex.height}</h3>
+        <h3>Weight: {pokedex.weight}</h3>
+        <h3>Type: {this.getTypes()}</h3>
+        
+        
       </div>
     )
   }

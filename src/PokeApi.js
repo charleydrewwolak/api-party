@@ -17,6 +17,7 @@ class PokeApi extends Component {
     ev.preventDefault()
     this.props.history.push(`/pokeapi/${this.state.pokemon}`)
   }
+  
 
   render() {
     return (
@@ -34,9 +35,10 @@ class PokeApi extends Component {
           </div>
         </form>
 
+
         <Route path='/pokeapi/:pokemon' component={Pokemon} />
         <Route exact path='/pokeapi' render={() => (
-          <h3>Please enter a pokemon id to search on PokeApi</h3>
+          <h3>Please enter a pokemon id  or name to search on PokeApi</h3>
         )} />
       </div>
     )
