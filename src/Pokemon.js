@@ -38,11 +38,11 @@ class Pokemon extends Component {
     return (
       <div className="pokemon">
         <img src={poke.sprites.front_default}/>
-        <h3>id: {poke.id}</h3>
-        <h3>name: {poke.name}</h3>
-        <h3>base experience: {poke.base_experience}</h3>
-        <h3>height: {poke.height}</h3>
-        <h3>weight: {poke.weight}</h3>
+        <h3>Id: {poke.id}</h3>
+        <h3>Name: {poke.name}</h3>
+        <h3>Base Experience: {poke.base_experience}</h3>
+        <h3>Height: {poke.height}</h3>
+        <h3>Weight: {poke.weight}</h3>
       </div>
     )
   }
