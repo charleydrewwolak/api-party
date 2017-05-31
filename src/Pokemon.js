@@ -9,6 +9,7 @@ class Pokemon extends Component {
         base_experience: '',
         height: '',
         weight: '',
+        sprites: {}
     }
   }
 
@@ -34,10 +35,9 @@ class Pokemon extends Component {
 
   render() {
     const { poke } = this.state
-    const pokeurl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.id + ".png" 
     return (
       <div className="pokemon">
-        <img src={pokeurl} alt={poke.name}/>
+        <img src={poke.sprites.front_default}/>
         <h3>id: {poke.id}</h3>
         <h3>name: {poke.name}</h3>
         <h3>base experience: {poke.base_experience}</h3>
